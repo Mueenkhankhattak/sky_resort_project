@@ -19,6 +19,7 @@ if response.status_code == 200:
     
     contact_page_link = sel.xpath('//a[@class="shaded detail-links link-img"]/@href').get()
     response = requests.get(contact_page_link)
+        
     if response.status_code == 200:
         print(f"Successfult fetched!")
         sel = Selector(text=response.text)
