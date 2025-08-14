@@ -1,11 +1,10 @@
 import requests
 from parsel import Selector
-
 total_pages = 32
 all_link = []
 #loop through over the pages
-page = 1
-while page < total_pages:
+for page in range(1,total_pages+1):
+
     if page == 1:
         url = "https://www.skiresort.info/ski-resorts"
     else:
@@ -17,7 +16,6 @@ while page < total_pages:
         sel = Selector(text=response.text)
         
         #Define the path
-        
         elements = sel.xpath('//div[@id= "resortList"]//div[@class="h3"]/a')
         for element in elements:
             text = element.xpath("./text()").getall()
@@ -25,7 +23,7 @@ while page < total_pages:
             all_link.append(url)
             #print(f'Text is: {text} | Url: {urls}')
             #print(len(urls))
-        print(len(all_link))
-    page += 1     
+print(len(all_link))
+     
     
             
