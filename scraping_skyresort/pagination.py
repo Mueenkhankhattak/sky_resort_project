@@ -24,8 +24,11 @@ while True:
     
     
     next_page = sel.xpath('//ul[@id="pagebrowser2"]//li/a[contains(text(), "›")]/@href').get()
-    if not  next_page:
+    
+    if next_page == url:
         break
+    
+    
     url = urljoin(base_url, next_page)
     
 
